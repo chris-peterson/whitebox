@@ -74,7 +74,7 @@ namespace Whitebox.Core.Application
         {
             get
             {
-                if (LimitType.Identity.DisplayName != typeof(object).Name)
+                if (LimitType.Identity != null && LimitType.Identity.DisplayName != typeof(object).Name)
                     return LimitType.Identity.DisplayFullName;
 
                 return "Unknown (" + string.Join(", ", Services.Select(s => s.ServiceType.Identity.DisplayName)) + ")";

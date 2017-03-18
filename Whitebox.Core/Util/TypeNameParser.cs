@@ -97,7 +97,15 @@ namespace Whitebox.Core.Util
         public static TypeIdentifier ParseAssemblyQualifiedTypeName(string assemblyQualifiedTypeName)
         {
             if (assemblyQualifiedTypeName == null) throw new ArgumentNullException("assemblyQualifiedTypeName");
-            return CompleteTypeName.Parse(assemblyQualifiedTypeName);
+            try
+            {
+                return CompleteTypeName.Parse(assemblyQualifiedTypeName);
+            }
+            catch (ParseException e)
+            {
+                Console.WriteLine(e);
+                return null;
+            }
         }
 
         public static string FormatAssemblyQualifiedTypeName(TypeIdentifier typeIdentifier)
